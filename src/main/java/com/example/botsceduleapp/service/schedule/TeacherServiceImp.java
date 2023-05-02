@@ -2,6 +2,9 @@ package com.example.botsceduleapp.service.schedule;
 
 import com.example.botsceduleapp.model.Schedule.Teacher;
 import com.example.botsceduleapp.repository.schedule.TeacherRepository;
+import jakarta.persistence.PersistenceContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 
@@ -9,8 +12,9 @@ import java.util.List;
 
 
 @Service
-public class TeacherServiceImp implements TeacherService {
 
+public class TeacherServiceImp implements TeacherService {
+    @Autowired
     private final TeacherRepository teacherRepository;
 
     TeacherServiceImp (TeacherRepository teacherRepository){

@@ -2,10 +2,15 @@ package com.example.botsceduleapp.service.users;
 
 import com.example.botsceduleapp.model.Users.User;
 import com.example.botsceduleapp.repository.users.UsersRepository;
+import jakarta.persistence.PersistenceContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class UsersServiceImp implements UsersService{
+    @Autowired
     private final UsersRepository usersRepository;
 
     UsersServiceImp(UsersRepository usersRepository){
