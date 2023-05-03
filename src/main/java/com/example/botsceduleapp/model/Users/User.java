@@ -9,12 +9,13 @@ import jakarta.persistence.*;
 public class User {
     @Id
     @Column(name = "id_tg")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "group")
+
+    @Column(name = "groups")
     private String group;
+
     @Column(name = "subgroup")
-    private String subgroup;
+    private Integer subgroup;
 
     public void setId(Integer id) {
         this.id = id;
@@ -32,11 +33,11 @@ public class User {
         return group;
     }
 
-    public void setSubgroup(String subgroup) {
+    public void setSubgroup(Integer subgroup) {
         this.subgroup = subgroup;
     }
 
-    public String getSubgroup() {
+    public Integer getSubgroup() {
         return subgroup;
     }
 }
