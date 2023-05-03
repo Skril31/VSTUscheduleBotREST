@@ -1,4 +1,4 @@
-package com.example.botsceduleapp.model.Schedule;
+package com.example.botsceduleapp.model;
 
 public class tg_users_an {
     private Long id;

@@ -1,8 +1,7 @@
 package com.example.botsceduleapp.service.users;
 
 import com.example.botsceduleapp.conect.Connection;
-import com.example.botsceduleapp.model.Schedule.schedule;
-import com.example.botsceduleapp.model.Schedule.tg_users_an;
+import com.example.botsceduleapp.model.tg_users_an;
 import com.example.botsceduleapp.model.Users.User;
 import com.example.botsceduleapp.repository.users.UsersRepository;
 

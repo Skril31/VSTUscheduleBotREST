@@ -2,11 +2,9 @@ package com.example.botsceduleapp.service.schedule;
 
 import com.example.botsceduleapp.conect.Connection;
 import com.example.botsceduleapp.model.Schedule.Teacher;
-import com.example.botsceduleapp.model.Schedule.schedule;
+import com.example.botsceduleapp.model.schedule;
 import com.example.botsceduleapp.repository.schedule.TeacherRepository;
-import jakarta.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 
@@ -38,7 +36,13 @@ public class TeacherServiceImp implements TeacherService {
 
     @Override
     public Teacher read(int id) {
-        return teacherRepository.getOne(id);
+        List<Teacher> lst= teacherRepository.findAll();
+        for (Teacher teacher:lst){
+            if (teacher.getId() == id){
+                return teacher;
+            }
+        }
+        return null;
     }
 
     @Override

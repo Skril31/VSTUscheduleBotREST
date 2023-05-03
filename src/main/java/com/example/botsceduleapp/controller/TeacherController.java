@@ -1,9 +1,8 @@
 package com.example.botsceduleapp.controller;
 
 import com.example.botsceduleapp.model.Schedule.Teacher;
-import com.example.botsceduleapp.model.Schedule.schedule;
+import com.example.botsceduleapp.model.schedule;
 import com.example.botsceduleapp.service.schedule.TeacherService;
-import com.example.botsceduleapp.service.schedule.TeacherServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+
 public class TeacherController {
     private final TeacherService teacherService;
     @Autowired
@@ -24,7 +24,7 @@ public class TeacherController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
     @GetMapping(value = "/teachers")
-    public ResponseEntity<List<Teacher>> read(){
+    public ResponseEntity<List<Teacher>> readAll(){
         final List<Teacher> teachers = teacherService.readAll();
 
         return teachers != null && !teachers.isEmpty()

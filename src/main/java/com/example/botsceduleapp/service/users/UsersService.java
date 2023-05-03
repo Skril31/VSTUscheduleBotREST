@@ -1,8 +1,6 @@
 package com.example.botsceduleapp.service.users;
 
-import com.example.botsceduleapp.model.Schedule.Teacher;
-import com.example.botsceduleapp.model.Schedule.schedule;
-import com.example.botsceduleapp.model.Schedule.tg_users_an;
+import com.example.botsceduleapp.model.tg_users_an;
 import com.example.botsceduleapp.model.Users.User;
 
 import java.util.List;

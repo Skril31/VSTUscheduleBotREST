@@ -1,9 +1,8 @@
 package com.example.botsceduleapp.service.schedule;
 
 import com.example.botsceduleapp.model.Schedule.Teacher;
-import com.example.botsceduleapp.model.Schedule.schedule;
+import com.example.botsceduleapp.model.schedule;
 
-import java.sql.ResultSet;
 import java.util.List;
 
 public interface TeacherService {
