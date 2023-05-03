@@ -3,8 +3,12 @@ package com.example.botsceduleapp.service.ads;
 import com.example.botsceduleapp.model.Ads.Ad;
 import com.example.botsceduleapp.repository.ads.AdRepository;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -12,9 +16,12 @@ import java.util.List;
 @Service
 public class AdServiceImp implements AdService {
     private final AdRepository adRepository;
+    MongoTemplate mongoTemplate;
 
-    AdServiceImp(AdRepository adRepository){
+    AdServiceImp(AdRepository adRepository, MongoTemplate mongoTemplate){
+
         this.adRepository = adRepository;
+        this.mongoTemplate = mongoTemplate;
     }
 
     @Override
@@ -24,6 +31,7 @@ public class AdServiceImp implements AdService {
 
     @Override
     public void create(Ad ad) {
+        ad.setLocalDateTime(LocalDateTime.now());
         adRepository.save(ad);
     }
 
@@ -52,5 +60,12 @@ public class AdServiceImp implements AdService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public List<Ad> GroupFilter(String name) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("groups").is(name));
+        return mongoTemplate.find(query,Ad.class);
     }
 }

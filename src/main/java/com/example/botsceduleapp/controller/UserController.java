@@ -1,5 +1,6 @@
 package com.example.botsceduleapp.controller;
 
+import com.example.botsceduleapp.model.Schedule.tg_users_an;
 import com.example.botsceduleapp.model.Users.User;
 import com.example.botsceduleapp.service.users.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,5 +55,14 @@ public class UserController {
         return deleted
                 ? new ResponseEntity<>(HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+    }
+
+    @GetMapping(value = "/users/{group}/list")
+    public ResponseEntity<List<tg_users_an>> GroupFilter(@PathVariable(name = "group") String group){
+        List<tg_users_an> list= usersService.GetByGroup(group);
+
+        return list != null && !list.isEmpty()
+                ? new ResponseEntity<>(list,HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }

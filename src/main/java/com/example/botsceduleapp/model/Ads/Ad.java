@@ -3,6 +3,8 @@ package com.example.botsceduleapp.model.Ads;
 import jakarta.persistence.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDateTime;
+
 @Document(collection = "ads")
 public class Ad {
     @Id
@@ -11,6 +13,7 @@ public class Ad {
     private String text;
     private String groups;
     private int subgroup;
+    private LocalDateTime localDateTime;
 
     public void setId(String id) {
         this.id = id;
@@ -50,6 +53,14 @@ public class Ad {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public LocalDateTime getLocalDateTime() {
+        return localDateTime;
+    }
+
+    public void setLocalDateTime(LocalDateTime localDateTime) {
+        this.localDateTime = localDateTime;
     }
 }
 

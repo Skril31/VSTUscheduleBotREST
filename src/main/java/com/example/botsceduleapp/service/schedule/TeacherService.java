@@ -1,7 +1,9 @@
 package com.example.botsceduleapp.service.schedule;
 
 import com.example.botsceduleapp.model.Schedule.Teacher;
+import com.example.botsceduleapp.model.Schedule.schedule;
 
+import java.sql.ResultSet;
 import java.util.List;
 
 public interface TeacherService {
@@ -39,5 +41,8 @@ public interface TeacherService {
      * @return
      */
     boolean delete(int id);
+
+    List<schedule> Teacherschedule(String fio);
+    List<schedule> GroupFilter(String group, int subgroup);
 
 }

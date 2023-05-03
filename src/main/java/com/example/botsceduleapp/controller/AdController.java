@@ -56,4 +56,12 @@ public class AdController {
                 : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
     }
 
+    @GetMapping(value = "/ad/{group}/list")
+    public ResponseEntity<List<Ad>> GroupFilter(@PathVariable(name = "group") String group){
+        List<Ad> list = adService.GroupFilter(group);
+        return list != null && !list.isEmpty()
+                ? new ResponseEntity<>(list, HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
 }

@@ -1,7 +1,9 @@
 package com.example.botsceduleapp.controller;
 
 import com.example.botsceduleapp.model.Schedule.Teacher;
+import com.example.botsceduleapp.model.Schedule.schedule;
 import com.example.botsceduleapp.service.schedule.TeacherService;
+import com.example.botsceduleapp.service.schedule.TeacherServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -52,6 +54,24 @@ public class TeacherController {
         return deleted
                 ? new ResponseEntity<>(HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+    }
+    @GetMapping(value = "/teachers/{name}/lessons")
+    public ResponseEntity<List<schedule>> TeacherFilter(@PathVariable(name = "name") String name){
+
+        List<schedule> schedules = teacherService.Teacherschedule(name);
+
+        return schedules != null && !schedules.isEmpty()
+                ? new ResponseEntity<>(schedules,HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+    @GetMapping(value = "/groups/{group}/subgroup/{sub}")
+    public ResponseEntity<List<schedule>> GroupFilter(@PathVariable(name = "group") String group, @PathVariable(name = "sub") Integer sub){
+
+        List<schedule> schedules = teacherService.GroupFilter(group,sub);
+
+        return schedules != null && !schedules.isEmpty()
+                ? new ResponseEntity<>(schedules,HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
 

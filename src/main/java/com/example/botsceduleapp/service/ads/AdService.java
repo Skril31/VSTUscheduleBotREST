@@ -13,5 +13,7 @@ public interface AdService {
      boolean delete(String id);
      boolean update(String id,Ad ad);
 
+     List<Ad> GroupFilter(String name);
+
 
 }
