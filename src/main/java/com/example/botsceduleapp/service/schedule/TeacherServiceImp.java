@@ -2,7 +2,7 @@ package com.example.botsceduleapp.service.schedule;
 
 import com.example.botsceduleapp.conect.Connection;
 import com.example.botsceduleapp.model.Schedule.Teacher;
-import com.example.botsceduleapp.model.schedule;
+import com.example.botsceduleapp.analiticRequests.schedule;
 import com.example.botsceduleapp.repository.schedule.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

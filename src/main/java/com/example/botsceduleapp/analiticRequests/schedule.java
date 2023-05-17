@@ -1,4 +1,4 @@
-package com.example.botsceduleapp.model;
+package com.example.botsceduleapp.analiticRequests;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;

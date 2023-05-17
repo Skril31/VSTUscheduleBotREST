@@ -1,6 +1,6 @@
 package com.example.botsceduleapp.controller;
 
-import com.example.botsceduleapp.model.tg_users_an;
+import com.example.botsceduleapp.analiticRequests.tg_users_an;
 import com.example.botsceduleapp.model.Users.User;
 import com.example.botsceduleapp.service.users.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;

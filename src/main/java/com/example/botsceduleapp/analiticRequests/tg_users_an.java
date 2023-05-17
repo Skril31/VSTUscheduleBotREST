@@ -1,4 +1,4 @@
-package com.example.botsceduleapp.model;
+package com.example.botsceduleapp.analiticRequests;
 
 public class tg_users_an {
     private Long id;

@@ -1,8 +1,11 @@
 package com.example.botsceduleapp.controller;
 
+import com.example.botsceduleapp.model.Schedule.Lessons;
 import com.example.botsceduleapp.model.Schedule.Teacher;
-import com.example.botsceduleapp.model.schedule;
+import com.example.botsceduleapp.analiticRequests.schedule;
 import com.example.botsceduleapp.service.schedule.TeacherService;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -73,6 +76,17 @@ public class TeacherController {
                 ? new ResponseEntity<>(schedules,HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+    @GetMapping(value = "/teacher/{id}/lessons")
+    public ResponseEntity<?> TeacherLessons(@PathVariable(name = "id") Integer id){
+        Teacher teacher = teacherService.read(id);
+        //List<String> teacherFioList = new ArrayList<>();
+        List<Lessons> lessons = teacher.getLessons();
 
+        return lessons != null && !lessons.isEmpty()
+                ? new ResponseEntity<>(lessons,HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+
+    }
 
 }

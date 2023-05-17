@@ -1,7 +1,7 @@
 package com.example.botsceduleapp.service.schedule;
 
 import com.example.botsceduleapp.model.Schedule.Teacher;
-import com.example.botsceduleapp.model.schedule;
+import com.example.botsceduleapp.analiticRequests.schedule;
 
 import java.util.List;
 
