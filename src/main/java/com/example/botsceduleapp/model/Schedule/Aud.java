@@ -1,6 +1,9 @@
 package com.example.botsceduleapp.model.Schedule;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "aud")
@@ -14,6 +17,10 @@ public class Aud {
     private String corpus;
     @Column(name = "number")
     private String number;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "aud", fetch = FetchType.EAGER)
+    @JsonIgnore
+    private List<Lessons> lessons;
 
     public Integer getId() {
         return id;
@@ -39,4 +46,11 @@ public class Aud {
         this.number = number;
     }
 
+    public List<Lessons> getLessons() {
+        return lessons;
+    }
+
+    public void setLessons(List<Lessons> lessons) {
+        this.lessons = lessons;
+    }
 }

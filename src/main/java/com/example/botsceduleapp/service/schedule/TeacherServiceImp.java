@@ -18,7 +18,6 @@ import java.util.List;
 @Service
 
 public class TeacherServiceImp implements TeacherService {
-    @Autowired
     private final TeacherRepository teacherRepository;
 
     TeacherServiceImp (TeacherRepository teacherRepository){

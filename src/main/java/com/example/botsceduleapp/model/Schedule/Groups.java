@@ -1,6 +1,9 @@
 package com.example.botsceduleapp.model.Schedule;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "groups")
@@ -15,6 +18,9 @@ public class Groups {
     @Column(name = "subgroup")
     private Integer subgroup;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "groups", fetch = FetchType.EAGER)
+    @JsonIgnore
+    private List<Lessons> lessons;
     public void setId(Integer id) {
         this.id = id;
     }
@@ -40,5 +46,11 @@ public class Groups {
         return subgroup;
     }
 
+    public List<Lessons> getLessons() {
+        return lessons;
+    }
 
+    public void setLessons(List<Lessons> lessons) {
+        this.lessons = lessons;
+    }
 }

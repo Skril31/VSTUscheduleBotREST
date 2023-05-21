@@ -17,6 +17,7 @@ import java.util.List;
 
 public class TeacherController {
     private final TeacherService teacherService;
+
     @Autowired
     public TeacherController(TeacherService teacherService){
         this.teacherService = teacherService;
@@ -58,15 +59,24 @@ public class TeacherController {
                 ? new ResponseEntity<>(HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
     }
-    @GetMapping(value = "/teachers/{name}/lessons")
-    public ResponseEntity<List<schedule>> TeacherFilter(@PathVariable(name = "name") String name){
-
-        List<schedule> schedules = teacherService.Teacherschedule(name);
-
-        return schedules != null && !schedules.isEmpty()
-                ? new ResponseEntity<>(schedules,HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
+//    @GetMapping(value = "/teachers/{name}/lessons")
+//    public ResponseEntity<List<schedule>> TeacherFilter(@PathVariable(name = "name") String name){
+//
+//        List<schedule> schedules = teacherService.Teacherschedule(name);
+//
+//        return schedules != null && !schedules.isEmpty()
+//                ? new ResponseEntity<>(schedules,HttpStatus.OK)
+//                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//    }
+//    @GetMapping(value = "/teachers/{name}/lessons")
+//    public ResponseEntity<List<Lessons>> TeacherFilter(@PathVariable(name = "name") String name){
+//
+//        List<Lessons> schedules = Le.Teacherschedule(name);
+//
+//        return schedules != null && !schedules.isEmpty()
+//                ? new ResponseEntity<>(schedules,HttpStatus.OK)
+//                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//    }
     @GetMapping(value = "/groups/{group}/subgroup/{sub}")
     public ResponseEntity<List<schedule>> GroupFilter(@PathVariable(name = "group") String group, @PathVariable(name = "sub") Integer sub){
 
@@ -80,6 +90,18 @@ public class TeacherController {
     public ResponseEntity<?> TeacherLessons(@PathVariable(name = "id") Integer id){
         Teacher teacher = teacherService.read(id);
         //List<String> teacherFioList = new ArrayList<>();
+        List<Lessons> lessons = teacher.getLessons();
+
+        return lessons != null && !lessons.isEmpty()
+                ? new ResponseEntity<>(lessons,HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+
+    }
+
+    @GetMapping(value = "/subject/{id}/lessons")
+    public ResponseEntity<?> SubjectLessons(@PathVariable(name = "id") Integer id){
+        Teacher teacher = teacherService.read(id);;
         List<Lessons> lessons = teacher.getLessons();
 
         return lessons != null && !lessons.isEmpty()

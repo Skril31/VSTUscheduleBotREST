@@ -1,5 +1,6 @@
 package com.example.botsceduleapp.model.Schedule;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class Subjects {
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "subjects", fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Lessons> lessons;
 
     public Integer getId() {
@@ -32,5 +34,13 @@ public class Subjects {
 
     public String getName() {
         return name;
+    }
+
+    public List<Lessons> getLessons() {
+        return lessons;
+    }
+
+    public void setLessons(List<Lessons> lessons) {
+        this.lessons = lessons;
     }
 }

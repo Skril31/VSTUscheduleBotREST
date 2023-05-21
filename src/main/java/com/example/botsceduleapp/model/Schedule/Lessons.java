@@ -1,8 +1,7 @@
 package com.example.botsceduleapp.model.Schedule;
 
-import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
-import com.fasterxml.jackson.annotation.ObjectIdResolver;
+
 
 
 @Entity
@@ -21,15 +20,27 @@ public class Lessons {
 
     @Column (name = "end_time")
     private String end_time;
+    @Column(name = "week_type")
+    private Integer week_type;
     @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     @JoinColumn(name = "id_teacher")
-    //@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-    //@JsonIdentityReference(alwaysAsId = true)
-    @JsonIgnore
     private Teacher teacher;
     @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     @JoinColumn(name = "id_subject")
     private Subjects subjects;
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    @JoinColumn(name = "id_lesson_type")
+    private lesson_type lesson_type;
+
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    @JoinColumn(name = "id_group")
+    private Groups groups;
+
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    @JoinColumn(name = "id_audit")
+    private Aud aud;
+
+
 
     public void setId(Integer id) {
         this.id = id;
@@ -71,5 +82,40 @@ public class Lessons {
         this.teacher = teacher;
     }
 
+    public void setGroups(Groups groups) {
+        this.groups = groups;
+    }
 
+    public com.example.botsceduleapp.model.Schedule.lesson_type getLesson_type() {
+        return lesson_type;
+    }
+
+    public Aud getAud() {
+        return aud;
+    }
+
+    public Groups getGroups() {
+        return groups;
+    }
+
+
+    public Integer getWeek_type() {
+        return week_type;
+    }
+
+    public void setWeek_type(Integer week_type) {
+        this.week_type = week_type;
+    }
+
+    public Subjects getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(Subjects subjects) {
+        this.subjects = subjects;
+    }
+
+    public void setAud(Aud aud) {
+        this.aud = aud;
+    }
 }
