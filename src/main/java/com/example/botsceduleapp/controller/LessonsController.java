@@ -1,9 +1,8 @@
 package com.example.botsceduleapp.controller;
 
 import com.example.botsceduleapp.model.Schedule.Lessons;
-import com.example.botsceduleapp.model.Schedule.Teacher;
+
 import com.example.botsceduleapp.service.schedule.LessonsService;
-import com.example.botsceduleapp.service.schedule.LessonsServiceImp;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -60,6 +59,23 @@ public class LessonsController {
     public ResponseEntity<List<Lessons>> TeacherFilter(@PathVariable(name = "name") String fio){
 
         final List<Lessons> lessons = lessonsService.findLessonsByTeacher(fio);
+
+        return lessons!=null && !lessons.isEmpty()
+                ? new ResponseEntity<>(lessons,HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+    @GetMapping(value = "/lessons/weekDay/{weekDay}/weekType/{weekType}/group/{group}/subgroup/{sub}")
+    public ResponseEntity <?> WeekDayFilter(@PathVariable(name = "weekDay") String weekD, @PathVariable(name = "weekType") Integer weekT,@PathVariable(name = "group") String gr, @PathVariable(name = "sub") Integer sub){
+
+        final List<Lessons> lessons = lessonsService.findLessonsByWeekDayAndWeekTypeAndGroupsGroupNameAndGroupsSubgroup(weekD,weekT,gr,sub);
+
+        return lessons!=null && !lessons.isEmpty()
+                ? new ResponseEntity<>(lessons,HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+    @GetMapping(value = "/lessons/weekType/{weekType}/group/{group}")
+    public ResponseEntity<List<Lessons>> WeekTypeFilter(@PathVariable(name = "weekType") Integer weekType, @PathVariable(name = "group") String group){
+        final List<Lessons> lessons = lessonsService.findLessonsByWeekTypeAndGroupsGroupName(weekType, group);
 
         return lessons!=null && !lessons.isEmpty()
                 ? new ResponseEntity<>(lessons,HttpStatus.OK)

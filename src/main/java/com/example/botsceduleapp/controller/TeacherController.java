@@ -4,8 +4,6 @@ import com.example.botsceduleapp.model.Schedule.Lessons;
 import com.example.botsceduleapp.model.Schedule.Teacher;
 import com.example.botsceduleapp.analiticRequests.schedule;
 import com.example.botsceduleapp.service.schedule.TeacherService;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
