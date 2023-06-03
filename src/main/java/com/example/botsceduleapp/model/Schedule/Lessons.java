@@ -13,7 +13,7 @@ public class Lessons {
     private Integer id;
 
     @Column(name = "week_day")
-    private String week_day;
+    private String weekDay;
 
     @Column(name = "start_time")
     private String start_time;
@@ -21,7 +21,7 @@ public class Lessons {
     @Column (name = "end_time")
     private String end_time;
     @Column(name = "week_type")
-    private Integer week_type;
+    private Integer weekType;
     @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     @JoinColumn(name = "id_teacher")
     private Teacher teacher;
@@ -50,12 +50,12 @@ public class Lessons {
         return id;
     }
 
-    public String getWeek_day() {
-        return week_day;
+    public String getWeekDay() {
+        return weekDay;
     }
 
-    public void setWeek_day(String week_day) {
-        this.week_day = week_day;
+    public void setWeekDay(String weekDay) {
+        this.weekDay = weekDay;
     }
 
     public String getStart_time() {
@@ -99,12 +99,12 @@ public class Lessons {
     }
 
 
-    public Integer getWeek_type() {
-        return week_type;
+    public Integer getWeekType() {
+        return weekType;
     }
 
-    public void setWeek_type(Integer week_type) {
-        this.week_type = week_type;
+    public void setWeekType(Integer weekType) {
+        this.weekType = weekType;
     }
 
     public Subjects getSubjects() {

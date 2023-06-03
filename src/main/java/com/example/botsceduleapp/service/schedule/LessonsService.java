@@ -1,5 +1,6 @@
 package com.example.botsceduleapp.service.schedule;
 
+import com.example.botsceduleapp.model.Schedule.Groups;
 import com.example.botsceduleapp.model.Schedule.Lessons;
 import com.example.botsceduleapp.model.Schedule.Subjects;
 import com.example.botsceduleapp.model.Schedule.Teacher;
@@ -22,4 +23,6 @@ public interface LessonsService {
     boolean delete(int id);
 
     List<Lessons> findLessonsByTeacher(String fio);
+    List<Lessons> findLessonsByWeekDayAndWeekTypeAndGroupsGroupNameAndGroupsSubgroup(String weekDay, Integer weekType, String grName, Integer sub);
+    List<Lessons> findLessonsByWeekTypeAndGroupsGroupName(Integer weekType, String group);
 }

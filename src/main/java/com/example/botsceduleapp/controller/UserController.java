@@ -65,4 +65,22 @@ public class UserController {
                 ? new ResponseEntity<>(list,HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+    @GetMapping(value = "/users/group/{group}/subgroup/{sub}")
+    public ResponseEntity<List<User>> GroupAndSubFilter(@PathVariable(name = "group") String group, @PathVariable(name = "sub") Integer sub){
+        List<User> list = usersService.findUsersByGroupAndSubgroup(group,sub);
+
+        return list != null && !list.isEmpty()
+                ? new ResponseEntity<>(list,HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+//    @GetMapping(value = "/users/group/{group}")
+//    public ResponseEntity<List<User>> GroupFilter(@PathVariable(name = "group") String group){
+//        List<User> list = usersService.findUsersByGroup(group);
+//
+//        return list != null && !list.isEmpty()
+//                ? new ResponseEntity<>(list,HttpStatus.OK)
+//                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//    }
 }

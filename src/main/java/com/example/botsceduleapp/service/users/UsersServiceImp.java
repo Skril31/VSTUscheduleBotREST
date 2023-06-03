@@ -82,5 +82,14 @@ public class UsersServiceImp implements UsersService{
         return null;
     }
 
+    public List<User> findUsersByGroupAndSubgroup(String group, Integer sub){
+        List<User> lst = usersRepository.findUsersByGroupAndSubgroup(group,sub);
+        return lst;
     }
+
+    @Override
+    public List<User> findUsersByGroup(String group) {
+        return usersRepository.findUsersByGroup(group);
+    }
+}
 

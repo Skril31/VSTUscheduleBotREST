@@ -42,4 +42,8 @@ public interface UsersService {
     boolean delete(int id);
 
     List<tg_users_an> GetByGroup(String fio);
+
+    List<User> findUsersByGroupAndSubgroup(String group, Integer sub);
+
+    List<User> findUsersByGroup(String group);
 }

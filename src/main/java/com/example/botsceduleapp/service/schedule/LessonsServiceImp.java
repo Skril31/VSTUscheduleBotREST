@@ -1,5 +1,6 @@
 package com.example.botsceduleapp.service.schedule;
 
+import com.example.botsceduleapp.model.Schedule.Groups;
 import com.example.botsceduleapp.model.Schedule.Lessons;
 import com.example.botsceduleapp.model.Schedule.Teacher;
 import com.example.botsceduleapp.repository.schedule.LessonsRepository;
@@ -57,5 +58,15 @@ public class LessonsServiceImp implements LessonsService{
     public List<Lessons> findLessonsByTeacher(String fio) {
 
         return lessonsRepository.findLessonsByTeacherFio(fio);
+    }
+
+    @Override
+    public List<Lessons> findLessonsByWeekDayAndWeekTypeAndGroupsGroupNameAndGroupsSubgroup(String weekDay, Integer weekType, String grName, Integer sub) {
+        return lessonsRepository.findLessonsByWeekDayAndWeekTypeAndGroupsGroupNameAndGroupsSubgroup(weekDay,weekType,grName,sub);
+    }
+
+    @Override
+    public List<Lessons> findLessonsByWeekTypeAndGroupsGroupName(Integer weekType, String group) {
+        return lessonsRepository.findLessonsByWeekTypeAndGroupsGroupName(weekType,group);
     }
 }

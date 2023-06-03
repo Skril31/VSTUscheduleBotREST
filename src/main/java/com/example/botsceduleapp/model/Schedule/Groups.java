@@ -13,7 +13,7 @@ public class Groups {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "group_name")
-    private String group_name;
+    private String groupName;
 
     @Column(name = "subgroup")
     private Integer subgroup;
@@ -33,12 +33,12 @@ public class Groups {
         this.subgroup = subgroup;
     }
 
-    public String getGroup_name() {
-        return group_name;
+    public String getGroupName() {
+        return groupName;
     }
 
-    public void setGroup_name(String group_name) {
-        this.group_name = group_name;
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
     }
 
 

@@ -17,6 +17,21 @@ public class User {
     @Column(name = "subgroup")
     private Integer subgroup;
 
+    @Column(name = "master")
+    private Integer master;
+
+    //@Column(name = "chat_id")
+    //private Integer chatId;
+
+
+    public Integer getMaster() {
+        return master;
+    }
+
+    public void setMaster(Integer master) {
+        this.master = master;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
